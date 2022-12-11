@@ -65,14 +65,22 @@ class SLinkedList:
             return
 
         for node in self:
-            if data is node.data:
+            while node.data is data:
                 node.data = node.next.data
                 node.next = node.next.next
-"""
-        if node.next is None:
-            self.tail = node
-            return
-"""
+
+    def search_node(self, node):
+        for nd in self:
+            if node is nd:
+                return True
+        return False
+
+    def search_data(self, data):
+        for nd in self:
+            if data is nd.data:
+                return True
+        return False
+
 
 llist = SLinkedList()
 llist.add_last("a")
@@ -83,10 +91,7 @@ llist.add_last("b")
 llist.add_last("b")
 llist.add_last("c")
 
-for node in llist:
-    print(node.data)
+node = llist.last_node()
 
-llist.remove_data("b")
 
-for node in llist:
-    print(node.data)
+print(llist.search_data("b"))

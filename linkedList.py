@@ -106,9 +106,13 @@ llist.remove_first()
 llist.add_first(first_node)
 fifth_node = Node("e")
 llist.add_last(fifth_node)
+
+print(llist.node_print())
+
 llist.insert_node("e", "f")
 llist.insert_node("f", "e")
 print(llist.node_print())
-
+"""
 for node in llist:
     print(node.data)
+"""
