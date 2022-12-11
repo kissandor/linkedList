@@ -8,6 +8,9 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def is_empty(self):
+        return self.head is None
+
     # function to print out the linked list
     def node_print(self):
         node = self.head
@@ -29,7 +32,7 @@ class LinkedList:
         self.head = node
 
     def add_last(self, node):
-        if self.head is None:
+        if self.is_empty():
             self.head = node
             return
         nd = self.head
@@ -43,13 +46,13 @@ class LinkedList:
         """
 
     def remove_first(self):
-        if self.head is None:
+        if self.is_empty():
             return "Empty list"
         self.head = self.head.next
 
     def remove_last(self):
         # if the list is empty, return Empty list
-        if self.head is None:
+        if self.is_empty():
             return "Empty list"
         # if in the list there is only one node, return an empty list
         elif self.head.next is None:
@@ -71,7 +74,7 @@ class LinkedList:
     # using this function when I insert a new node into the list
     # finds and returns the first node
     def find_node(self, node_data_to_find):
-        if self.head is None:
+        if self.is_empty():
             return "Empty list"
         for node in self:
             if node.data == node_data_to_find:
@@ -105,4 +108,7 @@ fifth_node = Node("e")
 llist.add_last(fifth_node)
 llist.insert_node("e", "f")
 llist.insert_node("f", "e")
-print(llist.nodePrint())
+print(llist.node_print())
+
+for node in llist:
+    print(node.data)
