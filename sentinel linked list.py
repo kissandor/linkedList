@@ -47,7 +47,7 @@ class SLinkedList:
         self.tail.next = end_node
         self.tail = end_node
 
-    def remove(self, node):
+    def remove_node(self, node):
         if node is self.head:
             self.remove_first()
             return
@@ -59,14 +59,34 @@ class SLinkedList:
             self.tail = node
             return
 
+    def remove_data(self, data):
+        if data is self.head.data:
+            self.remove_first()
+            return
+
+        for node in self:
+            if data is node.data:
+                node.data = node.next.data
+                node.next = node.next.next
+"""
+        if node.next is None:
+            self.tail = node
+            return
+"""
 
 llist = SLinkedList()
 llist.add_last("a")
 llist.add_last("b")
 llist.add_last("c")
+llist.add_last("b")
+llist.add_last("b")
+llist.add_last("b")
+llist.add_last("c")
 
-node = llist.last_node()
-llist.remove(node)
+for node in llist:
+    print(node.data)
+
+llist.remove_data("b")
 
 for node in llist:
     print(node.data)
